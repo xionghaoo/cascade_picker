@@ -31,25 +31,30 @@ import 'package:cascade_picker/cascade_picker.dart';
 
 #### 4\. Show
 ```dart
+/// CascadePicker的page是ListView，没有约束的情况下它的高度是无限的，
+/// 因此需要约束高度。
+///
+/// final _cascadeController = CascadeController();
+///
 /// initialPageData: 第一页的数据
-/// nextPageData: 下一页的数据，点击当前页的选择项后加载下一页
+/// nextPageData: 下一页的数据，点击当前页的选择项后调用该方法加载下一页
 /// controller: 控制器，用于获取已选择的数据
 /// maxPageNum: 最大页数
-/// 
-/// final _cascadeController = CascadeController();
-/// 
-/// CascadePicker(
-///   initialPageData: ['a', 'b', 'c', 'd'],
-///   nextPageData: (callback, currentPage, selectIndex) async {
-///     return ['one', 'two', 'three']
-///   },
-///   controller: _cascadeController,
-///   maxPageNum: 4,
+///
+/// Expand(
+///   child: CascadePicker(
+///     initialPageData: ['a', 'b', 'c', 'd'],
+///     nextPageData: (callback, currentPage, selectIndex) async {
+///       return ['one', 'two', 'three']
+///     },
+///     controller: _cascadeController,
+///     maxPageNum: 4,
 /// )
-/// 
+///
 /// InkBox(
 ///   child: Container(...)
 ///   onTap: () {
+///     /// 判断是否完成选择
 ///     if (_cascadeController.isCompleted()) {
 ///       List<String> selectedTitles = _cascadeController.selectedTitles;
 ///       List<int> selectedIndexes = _cascadeController.selectedIndexes;
