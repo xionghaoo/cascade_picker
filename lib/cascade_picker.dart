@@ -5,6 +5,13 @@ import 'package:flutter/material.dart';
 /// 级联选择器
 /// 使用示例:
 /// ```dart
+/// initialPageData: 第一页的数据
+/// nextPageData: 下一页的数据，点击当前页的选择项后加载下一页
+/// controller: 控制器，用于获取已选择的数据
+/// maxPageNum: 最大页数
+///
+/// final _cascadeController = CascadeController();
+///
 /// CascadePicker(
 ///   initialPageData: ['a', 'b', 'c', 'd'],
 ///   nextPageData: (callback, currentPage, selectIndex) async {
@@ -12,6 +19,16 @@ import 'package:flutter/material.dart';
 ///   },
 ///   controller: _cascadeController,
 ///   maxPageNum: 4,
+/// )
+///
+/// InkBox(
+///   child: Container(...)
+///   onTap: () {
+///     if (_cascadeController.isCompleted()) {
+///       List<String> selectedTitles = _cascadeController.selectedTitles;
+///       List<int> selectedIndexes = _cascadeController.selectedIndexes;
+///     }
+///   }
 /// )
 /// ```
 /// page是ListView，所以高度默认是无限大的。使用时需要给有限的高度。
