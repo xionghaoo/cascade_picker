@@ -1,7 +1,3 @@
-## 0.0.1
+## 0.0.4
 
-first publish
-
-## 0.0.2
-
-update user info
+更新说明

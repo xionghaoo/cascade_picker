@@ -12,14 +12,17 @@ import 'package:flutter/material.dart';
 ///
 /// initialPageData: 第一页的数据
 /// nextPageData: 下一页的数据，点击当前页的选择项后调用该方法加载下一页
+///   - pageCallback: 用于传递下一页的数据给CascadePicker
+///   - currentPage: 当前是第几页
+///   - selectIndex: 当前选中第几项
 /// controller: 控制器，用于获取已选择的数据
 /// maxPageNum: 最大页数
 ///
 /// Expand(
 ///   child: CascadePicker(
 ///     initialPageData: ['a', 'b', 'c', 'd'],
-///     nextPageData: (callback, currentPage, selectIndex) async {
-///       return ['one', 'two', 'three']
+///     nextPageData: (pageCallback, currentPage, selectIndex) async {
+///       pageCallback(['one', 'two', 'three'])
 ///     },
 ///     controller: _cascadeController,
 ///     maxPageNum: 4,
