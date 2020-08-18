@@ -65,4 +65,4 @@ import 'package:cascade_picker/cascade_picker.dart';
 ![demo 2][2]
 
 [1]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_1.png?raw=true
-[2]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_2.png?raw=true
+[2]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_2.gif?raw=true
