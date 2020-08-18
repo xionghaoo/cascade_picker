@@ -10,7 +10,7 @@ Add this to you package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  cascade_picker: ^0.0.2
+  cascade_picker: ^0.0.3
 ```
 
 #### 2\. Install
