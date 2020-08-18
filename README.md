@@ -4,4 +4,4 @@
 
 ## 效果
 
-<img src="https://github.com/xionghaoo/" width="300"/>
+<img src="https://github.com/xionghaoo/cascade_picker/blob/master/screenshots/select.gif" width="300"/>
