@@ -3,10 +3,28 @@ library cascade_picker;
 import 'package:flutter/material.dart';
 
 /// 级联选择器
+/// 使用示例:
+/// ```dart
+/// CascadePicker(
+///   initialPageData: ['a', 'b', 'c', 'd'],
+///   nextPageData: (callback, currentPage, selectIndex) async {
+///     return ['one', 'two', 'three']
+///   },
+///   controller: _cascadeController,
+///   maxPageNum: 4,
+/// )
+/// ```
+/// page是ListView，所以高度默认是无限大的。使用时需要给有限的高度。
+
+/// pageData: 下一页的数据
+/// currentPage: 当前是第几页,
+/// selectIndex: 当前页选中第几项
+typedef void NextPageCallback(Function(List<String>) pageData, int currentPage, int selectIndex);
+
 class CascadePicker extends StatefulWidget {
 
   final List<String> initialPageData;
-  final Function(Function(List<String>), int, int) nextPageData;
+  final NextPageCallback nextPageData;
   final int maxPageNum;
   final CascadeController controller;
   final double tabWidth;

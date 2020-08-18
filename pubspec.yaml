@@ -1,8 +1,8 @@
 name: cascade_picker
-description: A new Flutter package.
+description: 级联选择器
 version: 0.0.1
-author:
-homepage:
+author: xionghaoo
+homepage: https://github.com/xionghaoo/cascade_picker
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
