@@ -51,7 +51,6 @@ class CascadePicker extends StatefulWidget {
   final NextPageCallback nextPageData;
   final int maxPageNum;
   final CascadeController controller;
-  final double tabWidth;
   final Color tabColor;
   final double tabHeight;
   final TextStyle tabTitleStyle;
@@ -60,11 +59,10 @@ class CascadePicker extends StatefulWidget {
   final Color itemColor;
 
   CascadePicker({
-    this.initialPageData,
-    this.nextPageData,
+    required this.initialPageData,
+    required this.nextPageData,
     this.maxPageNum = 3,
-    this.controller,
-    this.tabWidth,
+    required this.controller,
     this.tabHeight = 40,
     this.tabColor = Colors.white,
     this.tabTitleStyle = const TextStyle(color: Colors.black, fontSize: 14),
@@ -87,9 +85,9 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
     _cascadeController._setState(this);
   }
 
-  AnimationController _controller;
-  CurvedAnimation _curvedAnimation;
-  Animation _sliderAnimation;
+  late final AnimationController _controller;
+  late final CurvedAnimation _curvedAnimation;
+  late final Animation _sliderAnimation;
   final _sliderFixMargin = ValueNotifier(0.0);
   double _sliderWidth = 20;
 
@@ -144,7 +142,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
             _selectedTabs.add(_newTabName);
             _selectedIndexes.add(-1);
           }
-          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
             _moveSlider(page, isAdd: true);
           });
         });
@@ -158,7 +156,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
           _pagesData.removeRange(page, _pagesData.length);
           _selectedIndexes.removeRange(page, _selectedIndexes.length);
           _selectedTabs.removeRange(page, _selectedTabs.length);
-          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
             // 调整滑块位置
             _moveSlider(currentPage);
           });
@@ -180,9 +178,9 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
     if (_controller.isAnimating) {
       _controller.stop();
     }
-    RenderBox slider = _sliderKey.currentContext.findRenderObject();
+    RenderBox slider = _sliderKey.currentContext?.findRenderObject() as RenderBox;
     Offset sliderPosition = slider.localToGlobal(Offset.zero);
-    RenderBox currentTabBox = _tabKeys[page].currentContext.findRenderObject();
+    RenderBox currentTabBox = _tabKeys[page].currentContext?.findRenderObject() as RenderBox;
     Offset currentTabPosition = currentTabBox.localToGlobal(Offset.zero);
 
     _animTabWidth = currentTabBox.size.width;
@@ -198,7 +196,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
   }
 
   /// 注意：tab渲染完成才开始动画，即调用moveSlider，这个方法会在动画执行期间多次调用
-  Widget _animateTab({Widget tab}) {
+  Widget _animateTab({required Widget tab}) {
     return Transform.translate(
       offset: Offset(Tween<double>(begin: _isAddTabEvent ? -_animTabWidth : 0, end: 0).evaluate(_curvedAnimation), 0),
       child: Opacity(
@@ -278,7 +276,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
             _selectedTabs[page] = item;
             _selectedIndexes[page] = index;
             /// 调整滑块位置
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
               _moveSlider(page);
             });
           });
@@ -333,8 +331,8 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
 
     _sliderAnimation = Tween<double>(begin: 0, end: 10).animate(_curvedAnimation);
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      RenderBox tabBox = _tabKeys.first.currentContext.findRenderObject();
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      RenderBox tabBox = _tabKeys.first.currentContext?.findRenderObject() as RenderBox;
       _sliderFixMargin.value = (tabBox.size.width - _sliderWidth) / 2;
     });
   }
@@ -356,7 +354,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
                   children: _tabWidgets(),
                 ),
               ),
-              ValueListenableBuilder(
+              ValueListenableBuilder<double>(
                 valueListenable: _sliderFixMargin,
                 builder: (_, margin, __) => Positioned(
                   left: margin + _sliderAnimation.value,
@@ -395,7 +393,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
 }
 
 class CascadeController {
-  _CascadePickerState _state;
+  late final _CascadePickerState _state;
 
   _setState(_CascadePickerState state) {
     _state = state;
