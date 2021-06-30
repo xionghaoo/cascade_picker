@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 ///   - selectIndex: 当前选中第几项
 /// controller: 控制器，用于获取已选择的数据
 /// maxPageNum: 最大页数
+/// selectedIcon: 已选中选项前面的图标，flutter package不能放本地资源文件，因此需要从外部传入，图标在images文件夹下面
 ///
 /// Expand(
 ///   child: CascadePicker(
@@ -26,6 +27,7 @@ import 'package:flutter/material.dart';
 ///     },
 ///     controller: _cascadeController,
 ///     maxPageNum: 4,
+///     selectedIcon: Image.asset("images/ic_select_mark.png", width: 10, height: 10, color: Colors.redAccent,),
 /// )
 ///
 /// InkBox(
@@ -57,6 +59,7 @@ class CascadePicker extends StatefulWidget {
   final double itemHeight;
   final TextStyle itemTitleStyle;
   final Color itemColor;
+  final Widget? selectedIcon;
 
   CascadePicker({
     required this.initialPageData,
@@ -68,7 +71,8 @@ class CascadePicker extends StatefulWidget {
     this.tabTitleStyle = const TextStyle(color: Colors.black, fontSize: 14),
     this.itemHeight = 40,
     this.itemColor = Colors.white,
-    this.itemTitleStyle = const TextStyle(color: Colors.black, fontSize: 14)
+    this.itemTitleStyle = const TextStyle(color: Colors.black, fontSize: 14),
+    this.selectedIcon
   });
 
   @override
@@ -87,7 +91,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
 
   late final AnimationController _controller;
   late final CurvedAnimation _curvedAnimation;
-  late final Animation _sliderAnimation;
+  Animation? _sliderAnimation;
   final _sliderFixMargin = ValueNotifier(0.0);
   double _sliderWidth = 20;
 
@@ -257,13 +261,15 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
             item == _selectedTabs[page]
                 ? Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Image.asset("images/ic_select_mark.png", width: 10, height: 10, color: Colors.redAccent,),
+              child: widget.selectedIcon == null
+                  ? Icon(Icons.chevron_right, size: 15, color: Colors.redAccent)
+                  : widget.selectedIcon,
             )
                 : SizedBox(),
             Text(
                 "$item",
                 style: item == _selectedTabs[page]
-                    ? widget.itemTitleStyle?.copyWith(color: Colors.redAccent)
+                    ? widget.itemTitleStyle.copyWith(color: Colors.redAccent)
                     : widget.itemTitleStyle
             ),
           ],
@@ -343,7 +349,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AnimatedBuilder(
-          animation: _sliderAnimation,
+          animation: _sliderAnimation!,
           builder: (context, child) => Stack(
             overflow: Overflow.clip,
             alignment: Alignment.bottomLeft,
@@ -357,7 +363,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
               ValueListenableBuilder<double>(
                 valueListenable: _sliderFixMargin,
                 builder: (_, margin, __) => Positioned(
-                  left: margin + _sliderAnimation.value,
+                  left: margin + _sliderAnimation!.value,
                   child: Container(
                     key: _sliderKey,
                     width: _sliderWidth,
