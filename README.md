@@ -64,6 +64,7 @@ import 'package:cascade_picker/cascade_picker.dart';
 ///     },
 ///     controller: _cascadeController,
 ///     maxPageNum: 4,
+///     selectedIcon: Image.asset("images/ic_select_mark.png", width: 10, height: 10, color: Colors.redAccent,),
 /// )
 ///
 /// InkBox(
