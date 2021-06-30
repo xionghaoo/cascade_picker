@@ -51,6 +51,7 @@ import 'package:cascade_picker/cascade_picker.dart';
 ///   - selectIndex: 当前选中第几项
 /// controller: 控制器，用于获取已选择的数据
 /// maxPageNum: 最大页数
+/// selectedIcon: 已选中选项前面的图标，flutter package不能放本地资源文件，因此需要从外部传入，图标在images文件夹下面
 ///
 /// Expand(
 ///   child: CascadePicker(
