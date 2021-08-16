@@ -39,7 +39,7 @@ import 'package:cascade_picker/cascade_picker.dart';
 
 #### 4\. Show
 
-[***选择项前面的图标位置：images/ic_select_mark.png***][3]
+选择项前面的图标位置：[***images/ic_select_mark.png***][3]
 
 ```dart
 /// CascadePicker的page是ListView，没有约束的情况下它的高度是无限的，
