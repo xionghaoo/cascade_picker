@@ -80,8 +80,8 @@ import 'package:cascade_picker/cascade_picker.dart';
 /// )
 ```
 
-## DEMO
-> [test_page.dart][4]
+## Demo代码
+> 可以直接用[test_page.dart][4]进行测试
 
 demo使用了以下树形结构数据：
 ```dart
