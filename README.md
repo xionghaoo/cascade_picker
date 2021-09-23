@@ -81,6 +81,7 @@ import 'package:cascade_picker/cascade_picker.dart';
 ```
 
 ## DEMO
+> [test_page.dart][4]
 
 demo使用了以下树形结构数据：
 ```dart
@@ -94,9 +95,7 @@ class Item {
 ```
 需要自己提取数据中要显示的标题。
 
-[test_page.dart][4]
-
-![demo.jpeg][5]
+![demo.jpeg =300][5]
 
 ## 效果
 
