@@ -95,13 +95,12 @@ class Item {
 ```
 需要自己提取数据中要显示的标题。
 
-<img src="https://github.com/xionghaoo/cascade_picker/blob/master/demo/demo.jpeg" width="300"/><br/>
+<img src="https://github.com/xionghaoo/cascade_picker/blob/master/demo/demo.jpeg" width="400"/><br/>
 
 ## 效果
 
-![Demo 1][1]
-
-![demo 2][2]
+| --- | --- |
+| ![Demo 1][1] | ![demo 2][2]
 
 [1]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_1.png?raw=true
 [2]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_2.gif?raw=true
