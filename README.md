@@ -93,7 +93,26 @@ class Item {
   List<Item>? children;
 }
 ```
-需要自己提取数据中要显示的标题。
+需要自己提取数据中要显示的标题。页数从1开始，选中项从0开始。
+```dart
+nextPageData: (pageCallback, currentPage, selectIndex) async {
+    if (currentPage == 1) {
+        // 在第一页选中，返回第二页列表数据
+        List<String>? nextPageData = items[selectIndex]
+            .children?.map((e) => e.name!).toList();
+        if (nextPageData != null) pageCallback(nextPageData);
+    } else if (currentPage == 2) {
+        // 在第二页选中，返回第二页列表数据
+        // 先获取已选中的序号
+        List<int> selectedIndexes = _cascadeController.selectedIndexes;
+        // 根据已选中的序号在items中获取下一级页面的列表数据
+        List<String>? nextPageData = items[selectedIndexes[0]]
+            .children?[selectIndex]
+            .children?.map((e) => e.name!).toList();
+        if (nextPageData != null) pageCallback(nextPageData);
+    }
+},
+```
 
 <img src="https://github.com/xionghaoo/cascade_picker/blob/master/demo/demo.jpeg" width="400"/><br/>
 
