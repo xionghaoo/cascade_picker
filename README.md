@@ -95,7 +95,7 @@ class Item {
 ```
 需要自己提取数据中要显示的标题。
 
-![demo.jpeg 100][5]
+![demo.jpeg][5]{:width="100px"}
 
 ## 效果
 
