@@ -95,7 +95,7 @@ class Item {
 ```
 需要自己提取数据中要显示的标题。
 
-<img src="https://github.com/xionghaoo/cascade_picker/blob/master/demo/demo.jpeg" width="100"/><br/>
+<img src="https://github.com/xionghaoo/cascade_picker/blob/master/demo/demo.jpeg" width="300"/><br/>
 
 ## 效果
 
