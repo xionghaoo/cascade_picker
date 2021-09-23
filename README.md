@@ -82,7 +82,21 @@ import 'package:cascade_picker/cascade_picker.dart';
 
 ## DEMO
 
+demo使用了以下树形结构数据：
+```dart
+class Item {
+  String? name;
+  String? code;
+  String? fatherCode;
+  String? remark;
+  List<Item>? children;
+}
+```
+需要自己提取数据中要显示的标题。
+
 [test_page.dart][4]
+
+![demo.jpeg][5]
 
 ## 效果
 
@@ -94,3 +108,4 @@ import 'package:cascade_picker/cascade_picker.dart';
 [2]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_2.gif?raw=true
 [3]:https://github.com/xionghaoo/cascade_picker/blob/master/images/ic_select_mark.png?raw=true
 [4]:https://github.com/xionghaoo/cascade_picker/blob/master/demo/test_page.dart
+[5]:https://github.com/xionghaoo/cascade_picker/blob/master/demo/demo.jpeg?raw=true
