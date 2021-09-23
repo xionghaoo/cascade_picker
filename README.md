@@ -80,6 +80,10 @@ import 'package:cascade_picker/cascade_picker.dart';
 /// )
 ```
 
+## DEMO
+
+[test_page.dart][4]
+
 ## 效果
 
 ![Demo 1][1]
@@ -89,3 +93,4 @@ import 'package:cascade_picker/cascade_picker.dart';
 [1]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_1.png?raw=true
 [2]:https://github.com/xionghaoo/assets/blob/master/cascade_picker_2.gif?raw=true
 [3]:https://github.com/xionghaoo/cascade_picker/blob/master/images/ic_select_mark.png?raw=true
+[4]:https://github.com/xionghaoo/cascade_picker/blob/master/demo/test_page.dart
