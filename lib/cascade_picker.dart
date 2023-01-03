@@ -351,7 +351,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
         AnimatedBuilder(
           animation: _sliderAnimation!,
           builder: (context, child) => Stack(
-            overflow: Overflow.clip,
+            clipBehavior: Clip.hardEdge,
             alignment: Alignment.bottomLeft,
             children: [
               Container(

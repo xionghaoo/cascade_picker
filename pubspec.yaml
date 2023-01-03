@@ -1,7 +1,6 @@
 name: cascade_picker
 description: 级联选择器
 version: 0.0.7
-author: xionghaoo <xionghao930316@gmail.com>
 homepage: https://github.com/xionghaoo/cascade_picker
 
 environment:
@@ -19,4 +18,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - images/
