@@ -125,7 +125,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
 
   _loadNextPageData(int page, int atIndex, String currentPageItem, {bool isUpdatePage = false}) {
     widget.nextPageData((data) {
-      final nextPageDataIsEmpty = data == null || data.isEmpty;
+      final nextPageDataIsEmpty = data.isEmpty;
       if (!nextPageDataIsEmpty) {
         /// 下一页有数据，更新本页数据或添加新的页面
         setState(() {
@@ -146,7 +146,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
             _selectedTabs.add(_newTabName);
             _selectedIndexes.add(-1);
           }
-          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             _moveSlider(page, isAdd: true);
           });
         });
@@ -160,7 +160,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
           _pagesData.removeRange(page, _pagesData.length);
           _selectedIndexes.removeRange(page, _selectedIndexes.length);
           _selectedTabs.removeRange(page, _selectedTabs.length);
-          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             // 调整滑块位置
             _moveSlider(currentPage);
           });
@@ -282,7 +282,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
             _selectedTabs[page] = item;
             _selectedIndexes[page] = index;
             /// 调整滑块位置
-            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
               _moveSlider(page);
             });
           });
@@ -337,7 +337,7 @@ class _CascadePickerState extends State<CascadePicker> with SingleTickerProvider
 
     _sliderAnimation = Tween<double>(begin: 0, end: 10).animate(_curvedAnimation);
 
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       RenderBox tabBox = _tabKeys.first.currentContext?.findRenderObject() as RenderBox;
       _sliderFixMargin.value = (tabBox.size.width - _sliderWidth) / 2;
     });
