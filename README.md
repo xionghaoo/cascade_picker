@@ -1,3 +1,5 @@
+
+
 # cascade_picker
 
 级联选择器
@@ -18,7 +20,7 @@ or
 ```yaml
 cascade_picker:
     git:
-      url: git://github.com/xionghaoo/cascade_picker.git
+      url: https://github.com/xionghaoo/cascade_picker.git
 ```
 
 #### 2\. Install
